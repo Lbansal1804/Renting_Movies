@@ -1,0 +1,34 @@
+﻿@model RentingMovies.ViewModels.RandomMovieViewModel
+
+@{
+    //Use DIRECTIVE to specify Type of MODEL for this view (used movie= the classname).
+    ViewBag.Title = "Random"; //Title of Browser next to favicon
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*
+    This is way to do multiple line cooment in view.
+    
+*@
+@{
+    var className = Model.Customers.Count > 0 ? "popular" : null;
+ }
+
+<h2 class="@className">@Model.Movie.Name</h2>
+
+
+@if (Model.Customers.Count == 0)
+{
+    <p>No has rented this movie</p>
+}
+else
+{
+    <ul>
+
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+
+}
